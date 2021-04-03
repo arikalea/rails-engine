@@ -4,4 +4,6 @@ class Transaction < ApplicationRecord
   has_many :invoice_items, through: :invoice
   has_many :items, through: :invoice_items
   has_many :merchants, through: :items
+
+  validates_presence_of :credit_card_number, :credit_card_expiration_date, :result
 end
