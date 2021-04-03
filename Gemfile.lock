@@ -275,7 +275,7 @@ DEPENDENCIES
   rspec-pride
   rspec-rails
   rubocop-rails
-  shoulda-matchers (~> 3.1)
+  shoulda-matchers
   simplecov
   travis
   tzinfo-data
