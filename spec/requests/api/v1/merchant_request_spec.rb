@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Merchants API" do
+RSpec.describe 'Merchants API' do
   describe 'All Merchants' do
     describe 'happy path' do
       it 'gives a list of all merchants' do
@@ -36,7 +38,7 @@ RSpec.describe "Merchants API" do
     describe 'sad paths' do
       it 'returns array if none are found' do
         Merchant.destroy_all
-        
+
         get '/api/v1/merchants'
 
         merchants = JSON.parse(response.body, symbolize_names: true)
