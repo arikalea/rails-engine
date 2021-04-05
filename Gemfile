@@ -30,6 +30,8 @@ gem 'bcrypt'
 gem 'hirb', '~> 0.7.3'
 gem 'faraday'
 gem 'figaro'
+gem 'json'
+gem 'fast_jsonapi'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -45,6 +47,8 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
