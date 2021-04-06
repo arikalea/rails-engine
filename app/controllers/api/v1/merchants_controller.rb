@@ -3,4 +3,8 @@ class Api::V1::MerchantsController < ApplicationController
     merchants = MerchantFacade.all_merchants(params.fetch(:page, 1), params.fetch(:per_page, 20))
     render json: MerchantSerializer.new(merchants)
   end
+
+  def show
+    render json: MerchantSerializer.new(Merchant.find(params[:id]))
+  end
 end

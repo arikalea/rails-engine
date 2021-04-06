@@ -23,32 +23,32 @@ gem 'puma', '~> 3.11'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'travis'
-gem 'mimemagic', '~> 0.3.9'
 gem 'bcrypt'
-gem 'hirb', '~> 0.7.3'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
-gem 'figaro'
-gem 'json'
 gem 'fast_jsonapi'
+gem 'figaro'
+gem 'hirb', '~> 0.7.3'
+gem 'json'
+gem 'mimemagic', '~> 0.3.9'
+gem 'travis'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry'
-  gem 'orderly'
   gem 'active_designer'
-  gem 'rspec-pride'
-  gem 'rspec-rails'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
-  gem 'launchy'
-  gem 'simplecov'
-  gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'launchy'
+  gem 'orderly'
+  gem 'pry'
+  gem 'rspec-pride'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
 end
 
 group :development do
@@ -57,8 +57,8 @@ group :development do
 end
 
 group :test do
-  gem 'webmock'
   gem 'vcr'
+  gem 'webmock'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

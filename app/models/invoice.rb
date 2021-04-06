@@ -5,5 +5,5 @@ class Invoice < ApplicationRecord
   has_many :items, through: :invoice_items
   has_many :merchants, through: :items
 
-  validates_presence_of :status
+  validates :status, presence: true
 end
