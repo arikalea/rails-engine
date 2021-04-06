@@ -57,4 +57,19 @@ RSpec.describe "All items API" do
       expect(items_2[:data].last[:id].to_i).to eq(items_2[:data].first[:id].to_i + 19)
     end
   end
+
+  describe 'sad path' do
+    it 'defualts to page one if page requested is 0 or lower' do
+      create_list(:item, 50)
+
+      get '/api/v1/items?page=0'
+
+      items = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(items[:data].count).to eq(20)
+      expect(items[:data].first).to have_key(:id)
+    end
+  end
 end
