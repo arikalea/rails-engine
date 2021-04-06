@@ -35,6 +35,26 @@ RSpec.describe "All items API" do
       expect(items[:data].count).to eq(20)
     end
 
-    
+    it 'returns a unique list of items results' do
+      create_list(:item, 50)
+
+      get '/api/v1/items?page=1'
+
+      items_1 = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(items_1[:data].count).to eq(20)
+      expect(items_1[:data].second[:id].to_i).to eq(items_1[:data].first[:id].to_i + 1)
+      expect(items_1[:data].last[:id].to_i).to eq(items_1[:data].first[:id].to_i + 19)
+
+      get '/api/v1/items?page=2'
+
+      items_2 = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(items_2[:data].count).to eq(20)
+      expect(items_2[:data].second[:id].to_i).to eq(items_2[:data].first[:id].to_i + 1)
+      expect(items_2[:data].last[:id].to_i).to eq(items_2[:data].first[:id].to_i + 19)
+    end
   end
 end
