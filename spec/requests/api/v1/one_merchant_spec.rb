@@ -15,7 +15,6 @@ RSpec.describe "One Merchant API" do
       expect(response).to be_successful
       expect(response.status).to eq(200)
       expect(merchant).to be_a Hash
-      expect(merchant[:name]).to be_a String
     end
   end
   describe 'sad path' do
