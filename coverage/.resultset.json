@@ -221,10 +221,20 @@
           null
         ]
       },
+      "/Users/arikablenker/turing/3module/projects/rails-engine/spec/factories/items.rb": {
+        "lines": [
+          1,
+          1,
+          21,
+          21,
+          21,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/arikablenker/turing/3module/projects/rails-engine/spec/factories/merchants.rb": {
         "lines": [
-          null,
-          null,
           1,
           1,
           21,
@@ -242,6 +252,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null
@@ -256,10 +267,8 @@
           null
         ]
       },
-      "/Users/arikablenker/turing/3module/projects/rails-engine/app/models/merchant.rb": {
+      "/Users/arikablenker/turing/3module/projects/rails-engine/app/models/item.rb": {
         "lines": [
-          null,
-          null,
           1,
           1,
           1,
@@ -285,17 +294,26 @@
           null
         ]
       },
-      "/Users/arikablenker/turing/3module/projects/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
+      "/Users/arikablenker/turing/3module/projects/rails-engine/app/models/merchant.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/arikablenker/turing/3module/projects/rails-engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           1,
           1,
-          0,
-          0,
-          null,
-          null,
           1,
-          null,
-          2,
           null,
           null
         ]
@@ -307,18 +325,8 @@
           1,
           null
         ]
-      },
-      "/Users/arikablenker/turing/3module/projects/rails-engine/app/serializers/merchant_serializer.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
       }
     },
-    "timestamp": 1617668656
+    "timestamp": 1617740364
   }
 }
