@@ -31,16 +31,41 @@ RSpec.describe "All Merchants API" do
 
       expect(merchants[:data].count).to eq(20)
     end
+
+    it 'returns a unique list of merchant results' do
+      create_list(:merchant, 50)
+
+      get '/api/v1/merchants?page=1'
+
+      merchants_1 = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(merchants_1[:data].count).to eq(20)
+      expect(merchants_1[:data].second[:id].to_i).to eq(merchants_1[:data].first[:id].to_i + 1)
+      expect(merchants_1[:data].last[:id].to_i).to eq(merchants_1[:data].first[:id].to_i + 19)
+
+      get '/api/v1/merchants?page=2'
+
+      merchants_2 = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(merchants_2[:data].count).to eq(20)
+      expect(merchants_2[:data].second[:id].to_i).to eq(merchants_2[:data].first[:id].to_i + 1)
+      expect(merchants_2[:data].last[:id].to_i).to eq(merchants_2[:data].first[:id].to_i + 19)
+    end
   end
   describe 'sad paths' do
-    it 'returns array if none are found' do
-      Merchant.destroy_all
+    it 'defaults to page one if page requested is 0 or lower' do
+      create_list(:merchant, 50)
 
-      get '/api/v1/merchants'
+      get '/api/v1/merchants?page=0'
 
       merchants = JSON.parse(response.body, symbolize_names: true)
 
-      expect(merchants[:data]).to be_an Array
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      expect(merchants[:data].count).to eq(20)
+      expect(merchants[:data].first).to have_key(:id)
     end
   end
 end

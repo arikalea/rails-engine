@@ -35,7 +35,7 @@ RSpec.describe "All items API" do
       expect(items[:data].count).to eq(20)
     end
 
-    it 'returns a unique list of items results' do
+    it 'returns a unique list of item results' do
       create_list(:item, 50)
 
       get '/api/v1/items?page=1'
@@ -59,7 +59,7 @@ RSpec.describe "All items API" do
   end
 
   describe 'sad path' do
-    it 'defualts to page one if page requested is 0 or lower' do
+    it 'defaults to page one if page requested is 0 or lower' do
       create_list(:item, 50)
 
       get '/api/v1/items?page=0'
