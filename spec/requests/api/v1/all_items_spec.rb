@@ -8,20 +8,33 @@ RSpec.describe "All items API" do
       get '/api/v1/items'
 
       items = JSON.parse(response.body, symbolize_names: true)
-      # require "pry";binding.pry
+
       expect(response).to be_successful
       expect(response.status).to eq(200)
-      expect(items.count).to eq(20)
-      expect(items.first).to have_key(:id)
-      expect(items.first[:id]).to be_a Integer
-      expect(items.first).to have_key(:name)
-      expect(items.first[:name]).to be_a String
-      expect(items.first).to have_key(:description)
-      expect(items.first[:description]).to be_a String
-      expect(items.first).to have_key(:unit_price)
-      expect(items.first[:unit_price]).to be_a Float
-      expect(items.first).to have_key(:merchant_id)
-      expect(items.first[:merchant_id]).to be_a Integer
+      expect(items[:data].count).to eq(20)
+      expect(items[:data].first).to have_key(:id)
+      expect(items[:data].first[:id]).to be_a String
+      expect(items[:data].first[:attributes]).to be_a Hash
+      expect(items[:data].first[:attributes]).to have_key(:name)
+      expect(items[:data].first[:attributes][:name]).to be_a String
+      expect(items[:data].first[:attributes]).to have_key(:description)
+      expect(items[:data].first[:attributes][:description]).to be_a String
+      expect(items[:data].first[:attributes]).to have_key(:unit_price)
+      expect(items[:data].first[:attributes][:unit_price]).to be_a Float
+      expect(items[:data].first[:attributes]).to have_key(:merchant_id)
+      expect(items[:data].first[:attributes][:merchant_id]).to be_a Integer
     end
+
+    it 'returns 20 items on page 2' do
+      create_list(:item, 50)
+
+      get '/api/v1/items?page=2'
+
+      items = JSON.parse(response.body, symbolize_names: true)
+
+      expect(items[:data].count).to eq(20)
+    end
+
+    
   end
 end

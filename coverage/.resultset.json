@@ -225,9 +225,9 @@
         "lines": [
           1,
           1,
-          21,
-          21,
-          21,
+          71,
+          71,
+          71,
           1,
           null,
           null
@@ -237,7 +237,7 @@
         "lines": [
           1,
           1,
-          21,
+          71,
           null,
           null
         ]
@@ -286,10 +286,10 @@
           null,
           1,
           1,
-          1,
-          0,
-          0,
-          0,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
@@ -313,7 +313,9 @@
         "lines": [
           1,
           1,
-          1,
+          2,
+          2,
+          2,
           null,
           null
         ]
@@ -325,8 +327,16 @@
           1,
           null
         ]
+      },
+      "/Users/arikablenker/turing/3module/projects/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1617740364
+    "timestamp": 1617747462
   }
 }
