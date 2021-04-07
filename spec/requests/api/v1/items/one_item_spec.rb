@@ -29,4 +29,14 @@ RSpec.describe "One item API" do
       expect(item[:data][:attributes][:merchant_id]).to be_a Integer
     end
   end
+  describe 'sad path' do
+    it 'Returns 404 if no id found' do
+      get "/api/v1/items/111111"
+
+      item = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(response).to be_not_found
+    end
+  end
 end
