@@ -14,20 +14,22 @@ RSpec.describe "One Merchant API" do
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
-      expect(merchant).to be_a Hash
+      expect(merchant[:data]).to be_a Hash
+      expect(merchant[:data]).to have_key(:id)
+      expect(merchant[:data][:id]).to be_a String
+      expect(merchant[:data][:attributes]).to be_a Hash
+      expect(merchant[:data][:attributes]).to have_key(:name)
+      expect(merchant[:data][:attributes][:name]).to be_a String
     end
   end
   describe 'sad path' do
-    before(:each) do
-      Merchant.destroy_all
-    end
-
-    xit 'Returns 404 if no id found' do
-      get "/api/v1/merchants/1"
+    it 'Returns 404 if no id found' do
+      get "/api/v1/merchants/111111"
 
       merchant = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(404)
+      expect(response).to be_not_found
     end
   end
 end

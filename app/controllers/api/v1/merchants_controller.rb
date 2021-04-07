@@ -1,7 +1,8 @@
 class Api::V1::MerchantsController < ApplicationController
   def index
-    merchants = MerchantFacade.all_merchants(params.fetch(:page, 1), params.fetch(:per_page, 20))
-    render json: MerchantSerializer.new(merchants)
+    page = params[:page] && params[:page].to_i >= 1 ? params.fetch(:page).to_i : 1
+    per_page = params[:per_page] ? params.fetch(:per_page).to_i : 20
+    render json: MerchantSerializer.new(Merchant.offset((page - 1) * per_page).limit(per_page))
   end
 
   def show
