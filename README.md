@@ -15,29 +15,29 @@ your local machine for development and testing purposes.
 
 ### Installing
 
-1. Fork and clone this repo.
+1. Fork and clone this repo
 
-    git clone git@github.com:<your_account>/rails-engine.git
+    `git clone git@github.com:<your_account>/rails-engine.git`
 
 2. Install gem packages: , creating and seeding database instructions:
 
-    bundle install
+    `bundle install`
 
 3. Download project [data]( https://raw.githubusercontent.com/turingschool/backend-curriculum-site/gh-pages/module3/projects/rails_engine/rails-engine-development.pgdump)
 
 4. Create and seed database:
 
-    rake db:{drop,create,migrate,seed}
+    `rake db:{drop,create,migrate,seed}`
 
 5. Start rails server:
 
-    rails s
+    `rails s`
 
 ## Testing
 
 * Run tests on your local:
 
-    bundle exec rspec
+    `bundle exec rspec`
 
 ## Built With
 
