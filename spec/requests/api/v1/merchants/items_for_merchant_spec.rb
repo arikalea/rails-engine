@@ -13,7 +13,7 @@ RSpec.describe "One Merchant API" do
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
-      expect(merchant_items[:data].count).to eq(10) 
+      expect(merchant_items[:data].count).to eq(10)
       expect(merchant_items[:data]).to be_a Array
       expect(merchant_items[:data].first).to have_key(:id)
       expect(merchant_items[:data].first[:id]).to be_a String
@@ -26,6 +26,16 @@ RSpec.describe "One Merchant API" do
       expect(merchant_items[:data].first[:attributes][:unit_price]).to be_a Float
       expect(merchant_items[:data].first[:attributes]).to have_key(:merchant_id)
       expect(merchant_items[:data].first[:attributes][:merchant_id]).to be_a Integer
+    end
+  end
+  describe 'sad path' do
+    it 'Returns 404 if no id found' do
+      get "/api/v1/merchants/111111/items"
+
+      merchant = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(response).to be_not_found
     end
   end
 end
