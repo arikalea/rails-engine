@@ -24,10 +24,10 @@ RSpec.describe "One Merchant API" do
   end
   describe 'sad path' do
     it 'Returns 404 if no id found' do
-      get "/api/v1/merchants/111111/items"
+      get "/api/v1/merchants/111111"
 
       merchant = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(response.status).to eq(404)
       expect(response).to be_not_found
     end
