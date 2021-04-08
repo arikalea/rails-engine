@@ -51,5 +51,30 @@ RSpec.describe "Create item API" do
       expect(response).not_to be_successful
       expect(response.status).to eq(406)
     end
+    it 'Does not create an item if attributes are invalid' do
+      merchant = create(:merchant)
+
+      item_params = ({
+                  other_name: 'Sally',
+                  name: 'item name',
+                  description: 'Really cool description',
+                  unit_price: 4.5,
+                  merchant_id: merchant.id
+                })
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/items', headers: headers, params: JSON.generate(item: item_params)
+
+      created_item = Item.last
+      returned_item = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+      expect(returned_item[:id]).to be_a String
+      expect(returned_item[:id]).to eq(created_item.id.to_s)
+      expect(returned_item).to have_key(:attributes)
+      expect(returned_item[:attributes]).to have_key(:name)
+      expect(returned_item[:attributes]).to_not have_key(:other_name)
+    end
   end
 end
