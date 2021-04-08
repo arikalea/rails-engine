@@ -10,7 +10,12 @@ class Invoice < ApplicationRecord
 
   def self.delete_one_item_invoice(item_id)
     item_invoices = Item.find(item_id).invoices
-    invoice_ids = item_invoices.joins(:invoice_items).select(:id).group(:id).having('count(invoice_items.item_id) <= 1').pluck(:id)
+    invoice_ids = item_invoices
+                  .joins(:invoice_items)
+                  .select(:id)
+                  .group(:id)
+                  .having('count(invoice_items.item_id) <= 1')
+                  .pluck(:id)
     Invoice.destroy(invoice_ids)
   end
 end
