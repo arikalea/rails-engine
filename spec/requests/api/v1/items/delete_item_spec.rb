@@ -37,6 +37,17 @@ RSpec.describe "Delete item API" do
       expect(Invoice.find(invoice_2.id)).to eq(invoice_2)
     end
   end
+  describe 'sad path' do
+    it 'Does not delete if no item id found' do
+      item = create(:item)
 
+      expect(Item.count).to eq(1)
 
+      delete "/api/v1/items/333"
+
+      expect(response.status).to eq(404)
+      expect(response).to be_not_found
+      expect(Item.count).to eq(1)
+    end
+  end   
 end
