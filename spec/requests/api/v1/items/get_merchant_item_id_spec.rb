@@ -22,4 +22,14 @@ RSpec.describe "Get merchant with item id API" do
       expect(merchant_json[:data][:attributes][:name]).to be_a String
     end
   end
+  describe 'sad path' do
+    it 'Returns 404 if no id found' do
+      get "/api/v1/items/111111/merchant"
+
+      merchant_json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(response).to be_not_found
+    end
+  end
 end
