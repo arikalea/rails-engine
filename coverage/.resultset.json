@@ -304,9 +304,18 @@
           null,
           null,
           1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
           null,
           1,
-          0,
+          null,
+          1,
+          1,
           null,
           null
         ]
@@ -321,8 +330,16 @@
           null,
           null
         ]
+      },
+      "/Users/arikablenker/turing/3module/projects/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1617850773
+    "timestamp": 1617851824
   }
 }

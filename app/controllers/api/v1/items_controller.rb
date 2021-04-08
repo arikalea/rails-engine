@@ -15,7 +15,16 @@ class Api::V1::ItemsController < ApplicationController
       render json: ItemSerializer.new(item), status: :created
     else
       render json: { message: "Your query could not be completed"}, status: :not_acceptable
-    end   
+    end
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      render json: ItemSerializer.new(item), status: :accepted
+    else
+      render json: { message: "Your query could not be completed"}, status: :not_found
+    end
   end
 
   private
