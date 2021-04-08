@@ -31,7 +31,7 @@ RSpec.describe "Create item API" do
     end
   end
 
-  xdescribe 'sad path' do
+  describe 'sad path' do
     it 'Does not create an item if attributes are missing' do
       merchant = create(:merchant)
 
@@ -46,9 +46,10 @@ RSpec.describe "Create item API" do
       post '/api/v1/items', headers: headers, params: JSON.generate(item: item_params)
 
       created_item = Item.last
-      returned_item = JSON.parse(response.body, symbolize_names: true)
+      returned_item = JSON.parse(response.body, symbolize_names: true)[:data]
 
       expect(response).not_to be_successful
+      expect(response.status).to eq(406)
     end
   end
 end
