@@ -14,7 +14,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.save
       render json: ItemSerializer.new(item), status: :created
     else
-      render json: { message: "Your query could not be completed"}, status: :not_acceptable
+      render json: { message: 'Your query could not be completed' }, status: :not_acceptable
     end
   end
 
@@ -23,7 +23,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.update(item_params)
       render json: ItemSerializer.new(item), status: :accepted
     else
-      render json: { message: "Your query could not be completed"}, status: :not_found
+      render json: { message: 'Your query could not be completed' }, status: :not_found
     end
   end
 
