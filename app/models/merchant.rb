@@ -9,8 +9,8 @@ class Merchant < ApplicationRecord
 
   def revenue
     transactions.where('transactions.result = ?', 'success')
-    .pluck('sum(invoice_items.unit_price * invoice_items.quantity)')
-    .first
-    .round(2)
+                .pluck('sum(invoice_items.unit_price * invoice_items.quantity)')
+                .first
+                .round(2)
   end
 end
