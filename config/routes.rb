@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       end
       resources :items do
         get '/merchant', to: 'items/item_merchants#show'
-      end 
+      end
+      get '/revenue/merchants/:id', to: 'revenue/merchants#show'
     end
   end
 end
