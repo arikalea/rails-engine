@@ -6,7 +6,7 @@ This project was one of the solo projects I worked on during [Mod3](https://back
 
 ## Database Schema
 
-TBD
+![alt_text](https://user-images.githubusercontent.com/71908665/114119616-3e2d0e80-98a8-11eb-88e5-5740a20668f3.png)
 
 ## Getting Started
 
